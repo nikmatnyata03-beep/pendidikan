@@ -26,3 +26,6 @@ addopts = "-q"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["app*"]
+
+[tool.vercel]
+entrypoint = "api.index:app"
