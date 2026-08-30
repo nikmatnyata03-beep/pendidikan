@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: university-nexus-api-staging
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/ready
+    envVars:
+      - key: NEXUS_ENVIRONMENT
+        value: staging
+      - key: NEXUS_DATABASE_URL
+        sync: false
+      - key: NEXUS_OIDC_ISSUER
+        sync: false
+      - key: NEXUS_OIDC_AUDIENCE
+        value: authenticated
+      - key: NEXUS_OIDC_JWKS_URL
+        sync: false
+      - key: NEXUS_OIDC_ALGORITHMS
+        value: RS256
+      - key: NEXUS_OIDC_CLOCK_SKEW_SECONDS
+        value: "30"
+      - key: NEXUS_ALLOWED_ORIGINS
+        sync: false
